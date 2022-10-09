@@ -56,11 +56,6 @@ button:active {
 
 
 
-.container {
-  padding: 0 2rem;
-}
-
-
 .game-container { 
   position: relative;
   width: 240px;
