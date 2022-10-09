@@ -111,27 +111,6 @@ export default function Home() {
     }
   }
 
-  function initGame() {
-    // console.log(allCoinsRef, allPlayersRef);
-    // setLoad(false);
-    // onValue(allPlayersRef, (snapshot) => {
-    //   console.log(snapshot.val());
-    //   players = snapshot.val() || {};
-    //   Object.keys(players).forEach((key) => {
-    //     const characterState = players[key];
-    //     let el = playerElements[key];
-    //     // Now update the DOM
-    //     el.querySelector(".Character_name").innerText = characterState.name;
-    //     el.querySelector(".Character_coins").innerText = characterState.coins;
-    //     el.setAttribute("data-color", characterState.color);
-    //     el.setAttribute("data-direction", characterState.direction);
-    //     const left = 16 * characterState.x + "px";
-    //     const top = 16 * characterState.y - 4 + "px";
-    //     el.style.transform = `translate3d(${left}, ${top}, 0)`;
-    //   });
-    // });
-  }
-
   return (
     <div>
       <div className="game-container">
@@ -143,6 +122,8 @@ export default function Home() {
             const styles = {
               transform: `translate3d(${left}, ${top}, 0)`,
             };
+            console.log(e.direction, e.color);
+
             return (
               <div
                 key={i}
@@ -150,6 +131,8 @@ export default function Home() {
                   e.id === playerId ? "you" : ""
                 } `}
                 style={styles}
+                data-direction={e.direction}
+                data-color={e.color}
               >
                 <div className="Character_shadow grid-cell"></div>
                 <div className="Character_sprite grid-cell"></div>
