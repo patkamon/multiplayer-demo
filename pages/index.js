@@ -1,13 +1,35 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+
 export default function Home() {
+  useEffect(() => {
+    const firebaseConfig = {};
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    signInAnonymously(auth)
+      .then(() => {
+        console.log("login");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+
+    onAuthStateChanged(auth, (user) => {
+      console.log(user.uid);
+    });
+  }, []);
+
   return (
     <div>
-      <div class="game-container"></div>
-      <div class="player-info"></div>
+      <div className="game-container"></div>
+      <div className="player-info"></div>
       <div>
-        <label for="player-name">Your Name</label>
+        <label htmlFor="player-name">Your Name</label>
         <input id="player-name" maxLength="10" type="text" />
       </div>
       <div>
