@@ -913,6 +913,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hotkeys-js@^3.8.1:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.10.0.tgz#2bbd13de4aa002fa916c34e3859239924311e35a"
+  integrity sha512-20xeVdOqcgTkMox0+BqFwADZP7+5dy/9CFPpAinSMh2d0s3b0Hs2V2D+lMh4Hphkf7VE9pwnOl58eP1te+REcg==
+
 ignore@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
@@ -1370,7 +1375,7 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -1396,6 +1401,14 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-hot-keys@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/react-hot-keys/-/react-hot-keys-2.7.2.tgz#7d2b02b7e2cf69182ea71ca01885446ebfae01d2"
+  integrity sha512-Z7eSh7SU6s52+zP+vkfFoNk0x4kgEmnwqDiyACKv53crK2AZ7FUaBLnf+vxLor3dvtId9murLmKOsrJeYgeHWw==
+  dependencies:
+    hotkeys-js "^3.8.1"
+    prop-types "^15.7.2"
 
 react-is@^16.13.1:
   version "16.13.1"
