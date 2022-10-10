@@ -23,7 +23,9 @@ export default function Home() {
   let coins = {};
   let coinElements = {};
 
-  const firebaseConfig = {};
+  const firebaseConfig = {
+
+  };
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const database = getDatabase();
@@ -73,11 +75,19 @@ export default function Home() {
 
         //Begin the game now that we are signed in
         let allPlayersRef = ref(database, `players`);
-        const allCoinsRef = ref(database, `coins`);
+        let allCoinsRef = ref(database, `coins`);
+
         setLoad(false);
 
         onChildAdded(allPlayersRef, (snapshot) => {
           setAllPlayers((allPlayers) => [...allPlayers, snapshot.val()]);
+        });
+
+        onChildAdded(allCoinsRef, (snapshot) => {
+          const coin = snapshot.val();
+          // const key = getKeyString(coin.x, coin.y);
+          // coins[key] = true;
+          setAllCoins((allCoins) => [...allCoins, coin]);
         });
       } else {
         //You're logged out.
@@ -146,6 +156,22 @@ export default function Home() {
                   <span className="Character_coins">{e.coins}</span>
                 </div>
                 <div className="Character_you-arrow"></div>
+              </div>
+            );
+          })}
+
+        {!load &&
+          allCoins.map((e, i) => {
+            const left = 16 * e.x + "px";
+            const top = 16 * e.y - 4 + "px";
+            const styles = {
+              transform: `translate3d(${left}, ${top}, 0)`,
+            };
+
+            return (
+              <div className="Coin grid-cell" style={styles} key={i}>
+                <div className="Coin_shadow grid-cell"></div>
+                <div className="Coin_sprite grid-cell"></div>
               </div>
             );
           })}
