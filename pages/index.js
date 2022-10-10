@@ -8,6 +8,7 @@ import {
   onDisconnect,
   onValue,
   onChildAdded,
+  onChildRemoved,
 } from "firebase/database";
 import { createName } from "../utils/createName";
 import { randomFromArray } from "../utils/randomFromArray";
@@ -78,7 +79,6 @@ export default function Home() {
         onChildAdded(allPlayersRef, (snapshot) => {
           setAllPlayers((allPlayers) => [...allPlayers, snapshot.val()]);
         });
-        console.log(allPlayers, "hello");
       } else {
         //You're logged out.
       }
@@ -86,12 +86,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log(allPlayers);
-  }, [allPlayers]);
+    let allPlayersRef = ref(database, `players`);
 
-  // if (allPlayersRef) {
-
-  // }
+    onChildRemoved(allPlayersRef, (snapshot) => {
+      const removed = snapshot.val();
+      console.log("remove", removed);
+      let arr = [...allPlayers];
+      let i = arr.indexOf(removed);
+      arr.splice(i, 1);
+      setAllPlayers(arr);
+    });
+  });
 
   function handleArrowPress(xChange = 0, yChange = 0) {
     const newX = players[playerId].x + xChange;
